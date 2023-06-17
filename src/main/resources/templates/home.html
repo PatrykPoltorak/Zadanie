@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/app.js"></script>
+</head>
+<body>
+<a th:href="@{/newPost}">Add New Post</a>
+<div>
+    Search <br>
+    <input id="search" type="search" placeholder="Search..">
+</div>
+
+<table>
+    <thead>
+        <tr>
+            <th><a th:href="@{/}">Id</a></th>
+            <th><a th:href="@{/orderByTitle}">Title</a></th>
+            <th><a th:href="@{/orderByDate}">Date</a></th>
+            <th>Details</th>
+        </tr>
+    </thead>
+    <tbody id = "tables">
+        <tr th:each = "tmpPost : ${posts}">
+            <td th:text="${tmpPost.id}"/>
+            <td th:text="${tmpPost.title}"/>
+            <td th:text="${tmpPost.date}"/>
+            <td><a th:href="@{/details(id=${tmpPost.id})}">Details</td>
+
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

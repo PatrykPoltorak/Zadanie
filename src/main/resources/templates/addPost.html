@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new post</title>
+</head>
+<body>
+<form th:action="@{/newPost}" th:object="${posts}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <label>Title</label>
+    <br>
+    <input type="text" th:field="*{title}">
+    <br>
+    <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
+    <br>
+    <label>Content</label>
+    <br>
+    <input type="text" th:field="*{content}">
+    <br>
+    <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}"/>
+    <br>
+    <input type="submit" value="Save Post" />
+</form>
+</body>
+</html>

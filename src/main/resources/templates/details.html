@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Details</title>
+</head>
+<body>
+<form th:action="@{/update}" th:object="${post}" method="post">
+    <input type="hidden" th:field="*{id}">
+    <label>Date</label>
+    <br>
+    <label type="label" th:field="*{date}"/>
+    <br>
+    <label>Title</label>
+    <br>
+    <input type="text" th:field="*{title}">
+    <br>
+    <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"/>
+    <br>
+    <label>Content</label>
+    <br>
+    <input type="text" th:field="*{content}">
+    <br>
+    <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}"/>
+    <br>
+    <input type="submit" value="Update"/>
+</form>
+<a th:href="@{/delate(id=${post.id})}">Delate</a>
+<a href="/">Home</a>
+</body>
+</html>
